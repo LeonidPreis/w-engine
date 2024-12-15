@@ -1,11 +1,9 @@
 #ifndef INTERPOLATION_H
 #define INTERPOLATION_H
-
 #include <vector>
-using namespace std;
 
 class Interpolation {
-    public:
+public:
     /**
      * @brief Calculates intermediate values ​​of a linear function between points A and B.
      * @note Time complexity: O(1).
@@ -15,8 +13,8 @@ class Interpolation {
      * @param yB coefficient y of point B. 
      * @return interpolated values. 
     */
-    static vector<double> linear(double xA, double yA, double xB, double yB);
-    public:
+    static std::vector<float> linear(float xA, float yA, float xB, float yB, float step);
+public:
     /**
      * @brief Calculates the values ​​of the edges of the triangle between points A, B, C using three corresponding interpolations. X is a value dependent on Y.
      * @note Time complexity: O(1);
@@ -28,6 +26,7 @@ class Interpolation {
      * @param yC coefficient y of point C.
      * @return The vector of two vectors. First vector contains the interpolated values along the edge AC. Second vector contains the interpolated values along the edges AB and BC.
     */
-    static vector<vector<double>> edge(double xA, double yA, double xB, double yB, double xC, double yC);
+    static std::vector<std::vector<float>> edge(float xA, float yA, float xB, float yB, float xC, float yC, float step);
 };
+
 #endif
