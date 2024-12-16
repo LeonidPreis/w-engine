@@ -29,6 +29,7 @@ std::vector<float> result = Interpolation::Linear(0.0f, 1.0f, 4.0f, 3.0f);
 ```
 ##### Visualisation
 ![Linear interpolation](../../images/linear_interpolation.png)
+---
 Green lines are interpolated values depending on the values of the variable **X**.
 > **Note**
 > The coordinates must be sorted and xB must be greater than xA.
@@ -61,6 +62,7 @@ std::vector<std::vector<float>> result = Interpolation::Edge(0.0f, -3.0f, 3.0f, 
 ```
 ##### Visualisation
 ![Edge interpolation](../../images/edge_interpolation.png)
+---
 Red lines are interpolated values depending on the variable **Y**. The dependent variable is specially changed from **X** to **Y** for rasterization to be **line-by-line**. This is due to storage in memory of the array representing the canvas.
 > **Note**
 > Coordinates Y for all points must be pre-sorted in ascending order from the lowest to the highest Y coordinate.
