@@ -7,12 +7,13 @@ The `Interpolation` class provides methods for linear interpolation and edge int
 ---
 ## Methods
 ### `Linear`
-Calculates intermediate values of a linearly function on the interval from `xA` to `xB` with a specified step. If `xA` is equal to `xB`, a vector containing a single value of `yA` is returned.
 > Time complexity: O(n).
 ##### Declaration
 ```cpp
-static std::vector<float>  Interpolation::Linear(float xA, float yA, float xB, float yB, float step);
+public static std::vector<float>  Interpolation::Linear(float xA, float yA, float xB, float yB, float step);
 ```
+##### Description
+Calculates intermediate values of a linearly function on the interval from `xA` to `xB` with a specified step. If `xA` is equal to `xB`, a vector containing a single value of `yA` is returned.
 ##### Parameters
 - `xA` — coefficient x of point A. Must be less than `xB`.
 - `yA` — coefficient y of point A. 
@@ -23,9 +24,18 @@ static std::vector<float>  Interpolation::Linear(float xA, float yA, float xB, f
 - `std::vector<float>` -  a vector of interpolated values of **Y** for each step in **X**.
 ##### Usage 
 ```cpp
-std::vector<float> result = Interpolation::Linear(0.0f, 1.0f, 4.0f, 3.0f);
+std::vector<float> result = Interpolation::Linear(1.0f, 1.5f, 4.0f, 3.0f);
 // output: 
-// result = {1, 1.5, 2, 2.5, 3};
+// result = {1.5, 2, 2.5, 3};
+```
+##### Mathematical description
+Linear interpolation is described with next equation:
+```math
+y = y_A+(x-x_A)\cdot \frac{(y_B-y_A)}{(x_B-x_A)}
+```
+For example you have two points `A(1, 1.5)` and `B(4, 3)`. You want to know the value **`y`** for **`x = 3`**. Then:
+```math
+y = 1.5 + (3-1)\cdot \frac{(3 - 1.5)}{4 - 1} = 2.5
 ```
 ##### Visualisation
 ![Linear interpolation](../../images/linear_interpolation.png)
@@ -39,7 +49,7 @@ Interpolates values along the edges of a triangle to rasterize it. Takes coordin
 > Time complexity: O(n).
 ##### Declaration
 ```cpp
-static std::vector<std::vector<float>> Interpolation::Edge(float xA, float yA, float xB, float yB, float xC, float yC, float step);
+public static std::vector<std::vector<float>> Interpolation::Edge(float xA, float yA, float xB, float yB, float xC, float yC, float step);
 ```
 ##### Parameters
 - `xA` — coefficient x of point A. Must be less than `xB`.

@@ -53,7 +53,7 @@ float Vector3::Dot(const Vector3& vectorB) {
 Vector3 Vector3::Cross(const Vector3& vectorB) {
     return Vector3(
         y * vectorB.z - vectorB.y * z,
-        z * vectorB.x - vectorB.z * x,
+      -(z * vectorB.x - vectorB.z * x),
         x * vectorB.y - vectorB.x * y
     );
 }
@@ -83,17 +83,4 @@ float Vector3::Angle(const Vector3& vectorB, bool degrees) {
 
 Vector3 Vector3::Reflect(const Vector3& normal) {
     return this->Subtract(normal.Scale(2 * this->Dot(normal)));
-}
-
-
-int main() {
-    cout << "Reflection" << endl;
-
-    // Vector3 normal = Vector3(0.0, 20.0, 0.0).normalize();
-    // Vector3 vector = Vector3(-30.0, -15.0, 0.0);
-    // Vector3 reflection = vector.reflect(normal);
-    // reflection.print();
-
-    cin.get();
-    return 0;
 }
