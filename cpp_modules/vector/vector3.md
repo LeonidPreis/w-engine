@@ -79,8 +79,14 @@ std::cout << length << std::endl;
 // 13.0
 ```
 ##### Mathematical description
-The length of a three-dimensional vector is defined as $\left| \overline{a} \right|=\sqrt{a_x^2+a_y^2+a_z^2}$.
-For example, there is a vector $\overline{a}\left\langle 3,-4,12 \right\rangle$, then its length is calculated as $\left| \overline{a} \right|=\sqrt{3^2+(-4)^2+12^2}=\sqrt{169}=13$.
+The length of a three-dimensional vector is defined as:
+```math
+\left| \overline{a} \right|=\sqrt{a_x^2+a_y^2+a_z^2}.
+```
+For example, there is a vector $\overline{a}\left\langle 3,-4,12 \right\rangle$, then its length is calculated will be:
+```math
+\left| \overline{a} \right|=\sqrt{3^2+(-4)^2+12^2}=\sqrt{169}=13.
+```
 
 ---
 ### `Normalize`
@@ -151,8 +157,14 @@ vectorC.Print();
 // Vector3(-9.0, -4.0, -4.0)
 ```
 ##### Mathematical description
-To add two vectors to each other, it is sufficient to add each coordinate of the first vector to the corresponding coordinate of the second vector. $\overline{a}+\overline{b} = \left\langle a_x+b_x, a_y+b_y, a_z+b_z\right\rangle$.
-For example there are two vectors $\overline{a}\left\langle 3,-4,12 \right\rangle$ and $\overline{b}\left\langle-12,0,16 \right\rangle$ then sum of the vectors will be $\overline{c} = \overline{a}+\overline{b} = \left\langle3+(-12), -4+0, 12+(-16)\right\rangle=\left\langle-9,-4,-4\right\rangle$.
+To add two vectors to each other, it is sufficient to add each coordinate of the first vector to the corresponding coordinate of the second vector. 
+```math
+\overline{a}+\overline{b} = \left\langle a_x+b_x, a_y+b_y, a_z+b_z\right\rangle
+```
+For example there are two vectors $\overline{a}\left\langle 3,-4,12 \right\rangle$ and $\overline{b}\left\langle-12,0,16 \right\rangle$ then sum of the vectors will be:
+```math
+\overline{c} = \overline{a}+\overline{b} = \left\langle3+(-12), -4+0, 12+(-16)\right\rangle=\left\langle-9,-4,-4\right\rangle.
+```
 
 Important properties of the vector subtraction:
 - **commutativity** $\overline{a}+\overline{b}=\overline{b}+\overline{a}$.
@@ -182,8 +194,14 @@ vectorC.Print();
 // Vector3(15.0, -4.0, 28.0)
 ```
 ##### Mathematical description
-To subtract two vectors from each other, simply subtract each coordinate of the first vector from the corresponding coordinate of the second vector as in next formula $\overline{a}-\overline{b} = \left\langle a_x-b_x, a_y-b_y, a_z-b_z\right\rangle$.
-For example there are two vectors $\overline{a}\left\langle 3,-4,12 \right\rangle$ and $\overline{b}\left\langle-12,0,16 \right\rangle$ then differance of the vectors will be $\overline{c} = \overline{a}+\overline{b} = \left\langle 3-(-12), -4-0, 12-(-16)\right\rangle=\left\langle15,-4,28\right\rangle$.
+To subtract two vectors from each other, simply subtract each coordinate of the first vector from the corresponding coordinate of the second vector as in next formula:
+```math
+\overline{a}-\overline{b} = \left\langle a_x-b_x, a_y-b_y, a_z-b_z\right\rangle.
+```
+For example there are two vectors $\overline{a}\left\langle 3,-4,12 \right\rangle$ and $\overline{b}\left\langle-12,0,16 \right\rangle$ then differance of the vectors will be:
+```math
+\overline{c} = \overline{a}+\overline{b} = \left\langle 3-(-12), -4-0, 12-(-16)\right\rangle=\left\langle15,-4,28\right\rangle.
+```
 > Important! Subtraction is non-associative operation $\overline{a}-\overline{b}\neq\overline{b}-\overline{a}$.
 
 ---
@@ -264,14 +282,16 @@ b_x & b_y & b_z
 \end{vmatrix} = i(a_yb_z-b_ya_z)-j(a_xb_z-b_xa_z)+k(a_xb_y-b_xa_y)
 ```
 
-For example you have to calculate the cross product of two vectors $\overline{a}\left( 3,-4,12 \right)$ and $\overline{b}\left(-12,0,-16 \right)$.
+For example you have to calculate the cross product of two vectors $\overline{a}\left\langle 3,-4,12 \right\rangle$ and $\overline{b}\left\langle-12,0,-16 \right\rangle$.
 ```math
 \left[\overline{a}\times\overline{b} \right] =
 \begin{vmatrix}
 \textbf i & \textbf j & \textbf k \\
 3 & -4 & 12 \\
 -12 & 0 & -16
-\end{vmatrix} = i((-4)\cdot(-16)-0\cdot12))-j(3\cdot(-16)-(-12)\cdot12)+k(3\cdot0-(-12)\cdot(-4))\\
+\end{vmatrix} = i((-4)\cdot(-16)-0\cdot12))-j(3\cdot(-16)-(-12)\cdot12)+k(3\cdot0-(-12)\cdot(-4))
+```
+```math
 \left[\overline{a}\times\overline{b} \right]=\left\langle 64,-96,-48 \right\rangle
 ```
 
@@ -307,7 +327,7 @@ Projection_{\overline{b}}\overline{a}=\frac{(\overline{a},\overline{b})}{\left| 
 For example you have to calculate the length of the projection $\overline{a}\left\langle 3,-4,12 \right\rangle$ onto $\overline{b}\left\langle-12,0,-16 \right\rangle$.
 
 ```math
-Projection_{\overline{b}}\overline{a}=\frac{a_xb_x+a_yb_y+a_zb_z}{\sqrt{b_x^2+b_y^2+b_z^2}}\\
+Projection_{\overline{b}}\overline{a}=\frac{a_xb_x+a_yb_y+a_zb_z}{\sqrt{b_x^2+b_y^2+b_z^2}}
 ```
 ```math
 Projection_{\overline{b}}\overline{a}=\frac{3\cdot (-12)+(-4)\cdot0+12\cdot(-16)}{\sqrt{(-12)^2+0^2+(-16)^2}}=\frac{-228}{20}=-11.4
@@ -343,10 +363,10 @@ cos\alpha = \frac{(\overline{a},\overline{b})}{\left| \overline{a} \right|\cdot\
 ```
 For example you have two vectors $\overline{a}\left\langle 3,-4,12 \right\rangle$ and $\overline{b}\left\langle-12,0,-16 \right\rangle$. Then angle will be:
 ```math
-cos\alpha=\frac{a_xb_x+a_yb_y+a_zb_z}{\sqrt{a_x^2+a_y^2+a_z^2}\cdot\sqrt{b_x^2+b_y^2+b_z^2}}\\
+cos\alpha=\frac{a_xb_x+a_yb_y+a_zb_z}{\sqrt{a_x^2+a_y^2+a_z^2}\cdot\sqrt{b_x^2+b_y^2+b_z^2}}
 ```
 ```math
-cos\alpha = \frac{3\cdot (-12)+(-4)\cdot0+12\cdot(-16)}{\sqrt{3^2+(-4)^2+12^2}\cdot\sqrt{(-12)^2+0^2+(-16)^2}}=\frac{-228}{260}=-\frac{57}{65}\\
+cos\alpha = \frac{3\cdot (-12)+(-4)\cdot0+12\cdot(-16)}{\sqrt{3^2+(-4)^2+12^2}\cdot\sqrt{(-12)^2+0^2+(-16)^2}}=\frac{-228}{260}=-\frac{57}{65}
 ```
 ```math
 \alpha=cos^{-1}(-\frac{57}{65})\cdot(\frac{180}{\pi})\cong151.2734^{\circ}
@@ -384,13 +404,17 @@ For example, there is a direction vector $\overline{d}\left\langle -30,-15,0 \ri
 ```math
 \overline{r}=\overline{d}-2\cdot(\overline{d},\overline{N})\cdot\overline{N}
 ```
+
 ```math
-2\cdot(\overline{d},\overline{N})=2\cdot(0\cdot(-30)+1\cdot(-15)+0\cdot(10))=-30\\
+2\cdot(\overline{d},\overline{N})=2\cdot(0\cdot(-30)+1\cdot(-15)+0\cdot(10))=-30
 ```
+
 ```math
--30\cdot\overline{N} = \left\langle 0,-30,0 \right\rangle\\
+-30\cdot\overline{N} = \left\langle 0,-30,0 \right\rangle
 ```
+
 ```math
 \overline{r}=\left\langle -30-0,-15-(-30),0-0 \right\rangle=\left\langle -30,15,0 \right\rangle
 ```
+
 ---
