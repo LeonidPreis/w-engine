@@ -4,7 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/cpp_modules/**",
-                "C:/msys64/mingw64/include/**"
+                "C:/msys64/mingw64/include/**",
+                "${workspaceFolder}/cpp_modules/vector3",
+                "${workspaceFolder}/cpp_modules/vector4"
             ],
             "defines": [
                 "_DEBUG",

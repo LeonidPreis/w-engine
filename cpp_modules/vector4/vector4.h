@@ -1,18 +1,19 @@
-#ifndef VECTOR3_H
-#define VECTOR3_H
+#ifndef VECTOR4_H
+#define VECTOR4_H
 
 #include <cmath>
 #include <iostream>
-#include <stdexcept>
+#include "vector4.h"
+
 using namespace std;
 const float radDeg = 57.295779513082320876;
 
-class Vector3 {
+class Vector4 {
 public:
-    Vector3(float x = 0, float y = 0, float z = 0): x(x), y(y), z(z) {}
+    Vector4(float x = 0, float y = 0, float z = 0, float w = 0): x(x), y(y), z(z), w(w) {}
 
 public:
-    float x, y, z;
+    float x, y, z, w;
 
 public:
     /**
@@ -20,7 +21,7 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Print
     */
     void Print();
 
@@ -30,11 +31,11 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Clone
      * 
      * @return New vector. Operation is non-mutable.
     */
-    Vector3 Clone() const;
+    Vector4 Clone() const;
 
 public:
     /**
@@ -42,11 +43,11 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Equals
      * 
      * @return Boolean value.
     */
-    bool Equals(const Vector3& vectorB) const;
+    bool Equals(const Vector4& vB) const;
 
 public:
     /**
@@ -54,9 +55,9 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Negate
     */
-    Vector3& Negate();
+    Vector4& Negate();
 
 public:
     /**
@@ -64,7 +65,7 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Length
      * @return Length value of the vector.
     */
     float Length() const;
@@ -75,9 +76,9 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Normalize
     */
-    Vector3 Normalize();
+    Vector4 Normalize() const;
 
 public:
     /**
@@ -85,34 +86,34 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Scale
      * @param scale multiplier.
     */
-    Vector3 Scale(const float& scale) const;
+    Vector4 Scale(const float& scale) const;
 
 public:
     /**
-     * @brief Adds vector B to the current vector.
+     * @brief Adds second vector to the current vector.
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
-     * @param vectorB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Add
+     * @param vB second vector.
      * @return New vector. Operation is non-mutable.
     */
-    Vector3 Add(const Vector3& vectorB);
+    Vector4 Add(const Vector4& vB) const;
 
 public:
     /**
-     * @brief Subtracts vector B from the current vector.
+     * @brief Subtracts second vector from the current vector.
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
-     * @param vectorB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Subtract
+     * @param vB second vector.
      * @return New vector. Operation is non-mutable.
     */
-    Vector3 Subtract(const Vector3& vectorB);
+    Vector4 Subtract(const Vector4& vB) const;
 
 public:
     /**
@@ -120,11 +121,11 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
-     * @param vectorB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Dot
+     * @param vB second vector.
      * @return Dot product.
     */
-    float Dot(const Vector3& vectorB);
+    float Dot(const Vector4& vB) const;
 
 public:
     /**
@@ -132,23 +133,23 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
-     * @param vectorB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Cross
+     * @param vB second vector.
      * @return New vector. Operation is non-mutable.
     */
-    Vector3 Cross(const Vector3& vectorB);
+    Vector4 Cross(const Vector4& vB);
 
 public:
     /**
-     * @brief Calculates the length of the projection of the current vector onto vector B.
+     * @brief Calculates the length of the projection of the current vector onto second vector.
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
-     * @param vectorB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Project
+     * @param vB second vector.
      * @return Length of the projection.
     */
-    float Project(const Vector3& vectorB);
+    float Project(const Vector4& vB);
 
 public:
     /**
@@ -156,12 +157,12 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
-     * @param vectorB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Angle
+     * @param vB second vector.
      * @param degrees taken into account when returning the value. Dafault - false (return value in radians).
      * @return Angle between vectors.
     */
-    float Angle(const Vector3& vectorB, bool degrees = false);
+    float Angle(const Vector4& vB, bool degrees = false);
 
 public:
     /**
@@ -169,11 +170,11 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/blob/main/cpp_modules/vector/vector3.md
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Reflect
      * @param normal vector of the normal. Must be normalized.
      * @return Reflected vector.
     */
-    Vector3 Reflect(const Vector3& normal);
+    Vector4 Reflect(const Vector4& normal);
 };
 
 #endif
