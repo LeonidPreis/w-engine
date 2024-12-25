@@ -8,8 +8,8 @@ Vector3 Vector3::Clone() const {
     return Vector3(x, y, z);
 }
 
-bool Vector3::Equals(const Vector3& vB) const {
-    return x == vB.x && y == vB.y && z == vB.z;
+bool Vector3::Equals(const Vector3& v) const {
+    return x == v.x && y == v.y && z == v.z;
 }
 
 Vector3& Vector3::Negate() {
@@ -37,41 +37,41 @@ Vector3 Vector3::Scale(const float& scale) const {
 }
 
 
-Vector3 Vector3::Add(const Vector3& vB) {
-    return  Vector3(x + vB.x, y + vB.y, z + vB.z);
+Vector3 Vector3::Add(const Vector3& v) {
+    return  Vector3(x + v.x, y + v.y, z + v.z);
 }
 
-Vector3 Vector3::Subtract(const Vector3& vB) {
-    return Vector3(x - vB.x, y - vB.y, z - vB.z);
+Vector3 Vector3::Subtract(const Vector3& v) {
+    return Vector3(x - v.x, y - v.y, z - v.z);
 }
 
-float Vector3::Dot(const Vector3& vB) {
-    return x * vB.x + y * vB.y + z * vB.z;
+float Vector3::Dot(const Vector3& v) {
+    return x * v.x + y * v.y + z * v.z;
 }
 
-Vector3 Vector3::Cross(const Vector3& vB) {
+Vector3 Vector3::Cross(const Vector3& v) {
     return Vector3(
-        y * vB.z - vB.y * z,
-      -(z * vB.x - vB.z * x),
-        x * vB.y - vB.x * y
+        y * v.z - v.y * z,
+      -(z * v.x - v.z * x),
+        x * v.y - v.x * y
     );
 }
 
-float Vector3::Project(const Vector3& vB) {
-    float length = vB.Length();
+float Vector3::Project(const Vector3& v) {
+    float length = v.Length();
     if (length == 0) {
         return 0.0f;
     } else {
-        return this->Dot(vB) / length;
+        return this->Dot(v) / length;
     }
 }
 
-float Vector3::Angle(const Vector3& vB, bool degrees) {
-    const float lengths = this->Length() * vB.Length();
+float Vector3::Angle(const Vector3& v, bool degrees) {
+    const float lengths = this->Length() * v.Length();
     if (lengths == 0) {
         return 0.0f;
     } else {
-        const float angle = this->Dot(vB) / lengths;
+        const float angle = this->Dot(v) / lengths;
         if (degrees) {
             return acos(angle) * radDeg;
         } else {

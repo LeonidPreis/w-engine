@@ -3,14 +3,17 @@
         {
             "type": "shell",
             "label": "G++ build",
+            //"command": "C:/msys64/usr/bin/bash.exe",
             "command": "C:/msys64/mingw64/bin/g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "-Og",
-                "${file}",
+                "${workspaceFolder}/src/matrix4.cpp",
+                "${workspaceFolder}/src/vector4.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
+                
                 "-std=c++17",
                 "-static-libgcc",
                 "-static-libstdc++"

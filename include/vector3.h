@@ -1,19 +1,17 @@
-#ifndef VECTOR4_H
-#define VECTOR4_H
+#ifndef VECTOR3_H
+#define VECTOR3_H
 
 #include <cmath>
 #include <iostream>
-#include "vector4.h"
 
-using namespace std;
 const float radDeg = 57.295779513082320876;
 
-class Vector4 {
+class Vector3 {
 public:
-    Vector4(float x = 0, float y = 0, float z = 0, float w = 0): x(x), y(y), z(z), w(w) {}
+    Vector3(float x = 0, float y = 0, float z = 0): x(x), y(y), z(z) {}
 
 public:
-    float x, y, z, w;
+    float x, y, z;
 
 public:
     /**
@@ -21,7 +19,7 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Print
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Print
     */
     void Print();
 
@@ -31,11 +29,11 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Clone
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Clone
      * 
      * @return New vector. Operation is non-mutable.
     */
-    Vector4 Clone() const;
+    Vector3 Clone() const;
 
 public:
     /**
@@ -43,21 +41,21 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Equals
-     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Equals
+     * @param v second vector.
      * @return Boolean value.
     */
-    bool Equals(const Vector4& vB) const;
+    bool Equals(const Vector3& v) const;
 
 public:
     /**
-     * @brief Changes the signs of the x,y,z coefficients.
+     * @brief Changes the signs of the x,y,z coefficients. Mutable operation.
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Negate
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Negate
     */
-    Vector4& Negate();
+    Vector3& Negate();
 
 public:
     /**
@@ -65,7 +63,7 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Length
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Length
      * @return Length value of the vector.
     */
     float Length() const;
@@ -76,9 +74,9 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Normalize
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Normalize
     */
-    Vector4 Normalize() const;
+    Vector3 Normalize();
 
 public:
     /**
@@ -86,34 +84,35 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Scale
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Scale
      * @param scale multiplier.
+     * @return New scaled vector.
     */
-    Vector4 Scale(const float& scale) const;
+    Vector3 Scale(const float& scale) const;
 
 public:
     /**
-     * @brief Adds second vector to the current vector.
+     * @brief Adds vector B to the current vector.
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Add
-     * @param vB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Add
+     * @param v second vector.
      * @return New vector. Operation is non-mutable.
     */
-    Vector4 Add(const Vector4& vB) const;
+    Vector3 Add(const Vector3& v);
 
 public:
     /**
-     * @brief Subtracts second vector from the current vector.
+     * @brief Subtracts vector B from the current vector.
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Subtract
-     * @param vB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Subtract
+     * @param v second vector.
      * @return New vector. Operation is non-mutable.
     */
-    Vector4 Subtract(const Vector4& vB) const;
+    Vector3 Subtract(const Vector3& v);
 
 public:
     /**
@@ -121,11 +120,11 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Dot
-     * @param vB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Dot
+     * @param v second vector.
      * @return Dot product.
     */
-    float Dot(const Vector4& vB) const;
+    float Dot(const Vector3& v);
 
 public:
     /**
@@ -133,23 +132,23 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Cross
-     * @param vB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Cross
+     * @param v second vector.
      * @return New vector. Operation is non-mutable.
     */
-    Vector4 Cross(const Vector4& vB);
+    Vector3 Cross(const Vector3& v);
 
 public:
     /**
-     * @brief Calculates the length of the projection of the current vector onto second vector.
+     * @brief Calculates the length of the projection of the current vector onto vector B.
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Project
-     * @param vB second vector.
-     * @return Length of the projection.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Project
+     * @param v second vector.
+     * @return Length of the projections.
     */
-    float Project(const Vector4& vB);
+    float Project(const Vector3& v);
 
 public:
     /**
@@ -157,12 +156,12 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Angle
-     * @param vB second vector.
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Angle
+     * @param v second vector.
      * @param degrees taken into account when returning the value. Dafault - false (return value in radians).
      * @return Angle between vectors.
     */
-    float Angle(const Vector4& vB, bool degrees = false);
+    float Angle(const Vector3& v, bool degrees = false);
 
 public:
     /**
@@ -170,11 +169,11 @@ public:
      * 
      * Documentation:
      * 
-     * https://github.com/LeonidPreis/w-engine/wiki/Vector4#Reflect
+     * https://github.com/LeonidPreis/w-engine/wiki/Vector3#Reflect
      * @param normal vector of the normal. Must be normalized.
      * @return Reflected vector.
     */
-    Vector4 Reflect(const Vector4& normal);
+    Vector3 Reflect(const Vector3& normal);
 };
 
 #endif
