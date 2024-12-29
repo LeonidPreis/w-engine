@@ -1,2 +1,2 @@
 .vscode/
-cpp_modules/**/*.exe
+build/*.exe

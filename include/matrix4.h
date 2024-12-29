@@ -4,6 +4,7 @@
 class Vector4;
 
 #include <iostream>
+#include <optional>
 
 class Matrix4 {
 public: 
@@ -25,39 +26,139 @@ public:
     float m41, m42, m43, m44;
 
 public:
+    /**
+     * @brief Outputs the matrix to the console
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Print
+    */
     void Print(const int& precision) const;
 
 public:
+    /**
+     * @brief Clones the current matrix
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Clone
+     * 
+     * @return New Matrix.
+    */
     Matrix4 Clone() const;
 
 public:
+    /**
+     * @brief Changes rows and columns of the matrix.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Transpose
+     * 
+     * @return New transposed matrix.
+    */
     Matrix4 Transpose() const;
 
 public:
+    /**
+     * @brief Computes the determinant of the matrix.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Determinant
+     * 
+     * @return Scalar value of determinant.
+    */
     float Determinant() const;
 
 public:
+    /**
+     * @brief Scales current matrix by a scalar value.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Scale
+     * 
+     * @param scale multiplyer.
+     * @return New scaled matrix.
+    */
     Matrix4 Scale(const float& scale) const;
 
 public:
-    Vector4 MultiplyVector4(const Vector4& v) const;
-
-public:
-    Matrix4 MultiplyMatrix(const Matrix4& m) const;
-
-public:
+    /**
+     * @brief Multiplies current matrix by column-vector.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#MultiplyVector
+     * 
+     * @param v vector to multiply. 
+     * @return New column-vector.
+    */
     Vector4 MultiplyVector(const Vector4& v) const;
 
 public:
-    Matrix4 Inverse() const;
+    /**
+     * @brief Calculates product of two matrices.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#MultiplyMatrix
+     * 
+     * @param m matrix to multiply.
+     * @return product of f the matrices.
+    */
+    Matrix4 MultiplyMatrix(const Matrix4& m) const;
 
 public:
+    /**
+     * @brief Calculates the inverse matrix.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Inverse
+     * 
+     * @return New inversed matrix or nullopt when determinant is equal zero.
+    */
+    std::optional<Matrix4> Inverse() const;
+
+public:
+    /**
+     * @brief Multiplies current matrix by itself degree times.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Degree
+     * 
+     * @param degree amount of the multiplications.
+     * @return New matrix.
+    */
     Matrix4 Degree(int degree) const;
 
 public:
+    /**
+     * Adds second matrix to the current matrix.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Add
+     * 
+     * @param m second matrix.
+     * @return Summ of the matrices.
+    */
     Matrix4 Add(const Matrix4& m) const;
 
 public:
+    /**
+     * @brief Subtracts second matrix from the current matrix.
+     * 
+     * Documentation:
+     * 
+     * https://github.com/LeonidPreis/w-engine/wiki/Matrix4#Subtract
+     * 
+     * @param m second matrix.
+     * @return Differance of the matrices.
+    */
     Matrix4 Subtract(const Matrix4& m) const;
 };
 
