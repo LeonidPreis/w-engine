@@ -14,10 +14,7 @@ bool Vector4::Equals(const Vector4& v) const {
 }
 
 Vector4& Vector4::Negate() {
-    x = -x;
-    y = -y;
-    z = -z;
-    w = -w;
+    x = -x, y = -y, z = -z, w = -w;
     return *this;
 }
 
@@ -27,11 +24,10 @@ float Vector4::Length() const {
 
 Vector4 Vector4::Normalize() const {
     float length = this->Length();
-    if (length == 0) {
-        return Vector4(0.0f, 0.0f, 0.0f, 0.0f);
-    } else {
-        return Vector4(x / length, y / length, z / length, w / length);
-    }
+
+    if (length == 0) return Vector4(0.0f, 0.0f, 0.0f, 0.0f);
+    
+    return Vector4(x / length, y / length, z / length, w / length);
 }
 
 Vector4 Vector4::Scale(const float& scale) const {
