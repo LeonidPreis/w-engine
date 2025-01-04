@@ -3,14 +3,17 @@
         {
             "type": "shell",
             "label": "G++ build",
-            //"command": "C:/msys64/usr/bin/bash.exe",
             "command": "C:/msys64/mingw64/bin/g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "-Og",
+                "${workspaceFolder}/src/interpolation.cpp",
                 "${workspaceFolder}/src/matrix4.cpp",
+                "${workspaceFolder}/src/vector3.cpp",
                 "${workspaceFolder}/src/vector4.cpp",
+                "${workspaceFolder}/src/quaternion.cpp",
+                "${workspaceFolder}/src/euler.cpp",
                 "-o",
                 "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
                 

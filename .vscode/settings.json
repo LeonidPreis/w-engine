@@ -57,7 +57,8 @@
         "text_encoding": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "set": "cpp"
     },
     "C_Cpp.default.compilerPath": "C:/msys64/mingw64/bin/g++.exe"
 }

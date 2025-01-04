@@ -8,7 +8,7 @@ class Matrix4;
 #include <iostream>
 #include <cmath>
 
-constexpr float radDeg = 57.295779513082320876;
+//constexpr float radDeg = 57.295779513082320876;
 
 class Quaternion {
 public: Quaternion(float w = 0.0f, float x = 0.0f, float y = 0.0f, float z = 0.0f): w(w), x(x), y(y), z(z) {}
@@ -58,6 +58,8 @@ public: Vector4 ApplyToVector(const Vector4& v) const;
 public: Quaternion Slerp(Quaternion& q, const float& t) const;
 
 public: static Quaternion FromAngleAxis(const float& angleRadians, const Vector4& axis);
+
+public: static Quaternion FromRotationMatrix(const Matrix4& m);
 
 };
 

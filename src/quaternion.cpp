@@ -74,7 +74,7 @@ float Quaternion::Angle(const Quaternion& q, const bool& degrees) const {
     const float angle = 2 * acos(abs(this->Dot(q) / lengths));
 
     if (degrees) {
-        return angle * radDeg;
+        return angle * 57.295779513082320876;
     } else {
         return angle;
     }
@@ -156,4 +156,16 @@ Quaternion Quaternion::Slerp(Quaternion& q, const float& t) const {
 Quaternion Quaternion::FromAngleAxis(const float& angleRadians, const Vector4& axis) {
     const float sinTheta = sin(angleRadians / 2);
     return Quaternion(cos(angleRadians / 2), axis.x * sinTheta, axis.y * sinTheta, axis.z * sinTheta);
+}
+
+Quaternion Quaternion::FromRotationMatrix(const Matrix4& m) {
+    const float xSign = std::signbit(m.m32 - m.m23) == false ? 1.0f : -1.0f;
+    const float ySign = std::signbit(m.m13 - m.m31) == false ? 1.0f : -1.0f;
+    const float zSign = std::signbit(m.m21 - m.m12) == false ? 1.0f : -1.0f;
+
+    const float w = 0.5f * pow((m.m11 + m.m22 + m.m33 + 1), 2);
+    const float x = 0.5f * pow((m.m11 - m.m22 - m.m33 + 1), 2) * xSign;
+    const float y = 0.5f * pow((-m.m11 + m.m22 - m.m33 + 1), 2) * ySign;
+    const float z = 0.5f * pow((-m.m11 - m.m22 + m.m33 + 1), 2) * zSign;
+    return Quaternion(w, x, y, z);
 }
