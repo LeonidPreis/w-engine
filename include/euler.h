@@ -2,6 +2,8 @@
 #define EULER
 
 class Vector4;
+class Matrix4;
+class Quaternion;
 
 #include <string>
 #include <iostream>
@@ -34,6 +36,20 @@ private: static void ComputeZXY(const float rotationMatrix[3][3], float& roll, f
 private: static void ComputeZYX(const float rotationMatrix[3][3], float& roll, float& pitch, float& yaw);
 
 public: static Euler FromAngleAxis(const float& angleRadians, const Vector4& axis, const std::string& order);
+
+public: static Euler FromRotationMatrix(const Matrix4& m);
+
+public: static Euler FromQuaternion(const Quaternion& q);
+
+public: Vector4 ToRotationAxis() const;
+
+public: Matrix4 RotateX();
+
+public: Matrix4 RotateY();
+
+public: Matrix4 RotateZ();
+
+public: Matrix4 RotateXYZ();
 
 };
 
