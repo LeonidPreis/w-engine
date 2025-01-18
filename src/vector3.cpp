@@ -1,4 +1,4 @@
-#include "vector3.h"
+#include "../include/vector3.h"
 
 void Vector3::Print() {
     std::cout << "Vector3(x: " << x << " y: " << y << " z: " << z << ")" << std::endl;

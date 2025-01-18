@@ -3,7 +3,7 @@
 #include "../include/matrix4.h"
 
 void Quaternion::Print(const int& precision = 6) const {
-    std::cout << std::fixed << std::setprecision(precision) << "Quaternion[ w: " << w << " x: " << x << " y: " << y << " z: " << z << " ]\n" << std::endl;
+    std::cout << std::fixed << std::setprecision(precision) << "Quaternion( w: " << w << " x: " << x << " y: " << y << " z: " << z << " )\n" << std::endl;
 }
 
 Quaternion Quaternion::Clone() const {

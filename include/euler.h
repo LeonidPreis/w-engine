@@ -1,39 +1,46 @@
 #ifndef EULER
 #define EULER
 
+#define _USE_MATH_DEFINES
+
 class Vector4;
 class Matrix4;
 class Quaternion;
 
+#include <set>
+#include <cmath>
 #include <string>
+#include <iomanip> 
 #include <iostream>
 #include <stdexcept>
-#define _USE_MATH_DEFINES
-#include <cmath>
-#include <set>
+
 
 class Euler {
 public: enum class Order { XYZ, XZY, YXZ, YZX, ZXY, ZYX };
 
-public: float roll, pitch, yaw;
+public: float alpha, beta, gamma;
 public: Order order;
 
-public: Euler(float roll = 0, float pitch = 0, float yaw = 0, const std::string& order = "XYZ"):
-    roll(roll), pitch(pitch), yaw(yaw), order(StringToOrder(order)) {}
+public: Euler(float alpha = 0, float beta = 0, float gamma = 0, const std::string& order = "XYZ"):
+    alpha(alpha), beta(beta), gamma(gamma), order(StringToOrder(order)) {}
 
-private: static Order StringToOrder(const std::string& order);
+public: static Order StringToOrder(const std::string& order);
 
-private: static void ComputeXYZ(const float rotationMatrix[3][3], float& roll, float& pitch, float& yaw);
+public: static std::string OrderToString(Order order);
 
-private: static void ComputeXZY(const float rotationMatrix[3][3], float& roll, float& pitch, float& yaw);
+public: void Print(const int& precision) const;
 
-private: static void ComputeYXZ(const float rotationMatrix[3][3], float& roll, float& pitch, float& yaw);
+public: static Euler XYZ(const Matrix4& rotationMatrix, float epsilon = 1e-6);
 
-private: static void ComputeYZX(const float rotationMatrix[3][3], float& roll, float& pitch, float& yaw);
+public: static Euler XZY(const Matrix4& rotationMatrix, float epsilon = 1e-6);
 
-private: static void ComputeZXY(const float rotationMatrix[3][3], float& roll, float& pitch, float& yaw);
+public: static Euler YXZ(const Matrix4& rotationMatrix, float epsilon = 1e-6);
 
-private: static void ComputeZYX(const float rotationMatrix[3][3], float& roll, float& pitch, float& yaw);
+public: static Euler YZX(const Matrix4& rotationMatrix, float epsilon = 1e-6);
+
+public: static Euler ZXY(const Matrix4& rotationMatrix, float epsilon = 1e-6);
+
+public: static Euler ZYX(const Matrix4& rotationMatrix, float epsilon = 1e-6);
 
 public: static Euler FromAngleAxis(const float& angleRadians, const Vector4& axis, const std::string& order);
 
@@ -41,15 +48,19 @@ public: static Euler FromRotationMatrix(const Matrix4& m);
 
 public: static Euler FromQuaternion(const Quaternion& q);
 
+public: float ToRotationAngle() const;
+
 public: Vector4 ToRotationAxis() const;
 
-public: Matrix4 RotateX();
+public: Quaternion ToQuaternion() const;
 
-public: Matrix4 RotateY();
+public: Matrix4 RotateX() const;
 
-public: Matrix4 RotateZ();
+public: Matrix4 RotateY() const;
 
-public: Matrix4 RotateXYZ();
+public: Matrix4 RotateZ() const;
+
+public: Matrix4 RotateXYZ() const;
 
 };
 

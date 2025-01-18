@@ -1,4 +1,4 @@
-#include "interpolation.h"
+#include "../include/interpolation.h"
 #include <iostream>
 
 std::vector<float> Interpolation::Linear(float xA, float yA, float xB, float yB, float step = 1) {
